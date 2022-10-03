@@ -1,0 +1,6 @@
+.header-logo img {
+    width: 60%;
+}
+.tab-pane .post.post-small.post-list .post-wrap .image {
+    flex: 0 0 100px;
+}

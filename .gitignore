@@ -1,6 +1,5 @@
 /node_modules
-/public/hot
-/public/storage
+
 /storage/*.key
 /vendor
 .DS_Store
@@ -36,9 +35,9 @@ storage/settings.json
 
 public/mix-manifest.json
 
-public/themes
+
 /storage/installing
-public/docs
+
 resources/docs
 
 .phpunit.result.cache
