@@ -281,12 +281,7 @@ a.active-red:hover span {
     background-color: rgba(255, 255, 255, .05);
     color: #555 !important;
 }
-h1, h2, h3, h4, h5, h6 {
-    color: #444444;
-    font-family: 'Cairo', sans-serif;
-    font-weight: 400;
-    margin-top: 0;
-}
+
 .post.post-dark .post-wrap .content .read-more.btn {
     color: #ffffff;
 }
@@ -951,7 +946,7 @@ footer .footer-top-section {
      }
     .post-block-wrapper .body {
         padding: 10px;
-
+       
     }
     .mean-nav ul li a.mean-expand {
 

@@ -59,6 +59,12 @@ add_shortcode('subscribe-form', 'Subscribe Form', 'Subscribe Form', function () 
     return Theme::partial('short-codes.subscribe-form');
 });
 
+add_shortcode('currencies', 'Currencies', 'Currencies', function () {
+    // return Theme::partial('short-codes.featured-posts');
+     return Theme::partial('short-codes.currencies');
+ });
+
+ shortcode()->setAdminConfig('currencies', Theme::partial('short-codes.currencies-admin-config'));
 shortcode()->setAdminConfig('google-map', Theme::partial('short-codes.google-map-admin-config'));
 shortcode()->setAdminConfig('youtube-video', Theme::partial('short-codes.youtube-admin-config'));
 function make_slug($string, $separator = '-')

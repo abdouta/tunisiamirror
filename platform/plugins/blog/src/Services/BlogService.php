@@ -31,6 +31,7 @@ class BlogService
      */
     public function handleFrontRoutes($slug)
     {
+
         if (!$slug instanceof Eloquent) {
             return $slug;
         }
@@ -94,7 +95,7 @@ class BlogService
                     }
                 }
 
-           
+
 
 
                 $meta->addProperty('article:tag', $article_tags);

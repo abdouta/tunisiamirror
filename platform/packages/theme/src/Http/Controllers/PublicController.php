@@ -4,6 +4,7 @@ namespace Botble\Theme\Http\Controllers;
 
 use Botble\Theme\Events\RenderingSingleEvent;
 use Botble\Base\Http\Responses\BaseHttpResponse;
+use Botble\Blog\Models\Post;
 use Botble\Page\Repositories\Interfaces\PageInterface;
 use Botble\Setting\Supports\SettingStore;
 use Botble\Slug\Repositories\Interfaces\SlugInterface;
@@ -71,6 +72,7 @@ class PublicController extends Controller
      */
     public function getView(BaseHttpResponse $response, $key = null)
     {
+
         if (empty($key)) {
             return $this->getIndex($response);
         }
@@ -78,7 +80,22 @@ class PublicController extends Controller
         $slug = $this->slugRepository->getFirstBy(['key' => $key, 'prefix' => '']);
 
         if (!$slug) {
+            $post=Post::where(['short_link'=>$slug])->first();
+
+            if (!$post) {
             abort(404);
+            }else{
+                $slug = $this->slugRepository->getFirstBy([
+                    'reference_id'    => $post->id,
+                    'reference_type'=>'Botble\Blog\Models\Post',
+                    'prefix' => SlugHelper::getPrefix(Post::class),
+                ]);
+                dd($slug);
+                if (!$slug) {
+                    abort(404);
+                    }
+            }
+
         }
 
         $result = apply_filters(BASE_FILTER_PUBLIC_SINGLE_DATA, $slug);

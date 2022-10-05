@@ -9,7 +9,7 @@ Route::group(['namespace' => 'Botble\Blog\Http\Controllers', 'middleware' => 'we
     Route::group(['prefix' => BaseHelper::getAdminPrefix(), 'middleware' => 'auth'], function () {
 
         Route::group(['prefix' => 'posts', 'as' => 'posts.'], function () {
-            Route::resource('', 'PostController')
+             Route::resource('', 'PostController')
                 ->parameters(['' => 'post']);
 
             Route::delete('items/destroy', [

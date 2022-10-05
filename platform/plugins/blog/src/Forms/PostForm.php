@@ -48,7 +48,7 @@ class PostForm extends FormAbstract
             $this->formHelper->addCustomField('categoryMulti', CategoryMultiField::class);
         }
 
-        $this
+        $form= $this
             ->setupModel(new Post)
             ->setValidatorClass(PostRequest::class)
             ->withCustomFields()
@@ -122,8 +122,22 @@ class PostForm extends FormAbstract
                     'placeholder' => trans(''),
                     'data-counter' => 255,
                 ],
-            ])
-            ->add('image', 'mediaImage', [
+            ]);
+            if($this->getModel()){
+
+                $shortLink=($this->getModel()->short_link)?env('APP_URL').''.$this->getModel()->short_link:null;
+               if($shortLink)
+                $form= $form->add('Short Links', 'html', [
+                    'html' => '<div>Short Link: <br><a style="
+                    width: 100px;
+                    word-break: break-all;
+                " target="_blank" href="'.$shortLink.'">'.$shortLink.'</a><br>
+
+                   </div>
+                    ',
+                ]);
+            }
+            $form->add('image', 'mediaImage', [
                 'label' => trans('core/base::forms.image'),
                 'label_attr' => ['class' => 'control-label'],
             ])
@@ -136,6 +150,7 @@ class PostForm extends FormAbstract
                     'data-url' => route('tags.all'),
                 ],
             ])
-            ->setBreakFieldPoint('status');
+
+           ->setBreakFieldPoint('status');
     }
 }

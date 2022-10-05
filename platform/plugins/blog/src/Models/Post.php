@@ -68,6 +68,7 @@ class Post extends BaseModel
         'name',
         'description',
         'content',
+        'short_link',
         'image',
         'is_featured',
         'is_popular',
@@ -187,7 +188,7 @@ class Post extends BaseModel
                 ->with('slugable')
                 ->orderBy('posts.created_at', 'desc')->get();
     }
-    
+
     public static function getSlider($limit = 8, array $with = [])
     {
         return $data = Post::select('*')
@@ -197,5 +198,5 @@ class Post extends BaseModel
             ->orderBy('posts.created_at', 'desc')
             ->limit($limit)->get();
     }
-    
+
 }

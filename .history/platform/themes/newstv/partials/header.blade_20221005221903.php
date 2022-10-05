@@ -31,7 +31,7 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="/themes/newstv/pad/css/owl.carousel.css">
     <link rel="stylesheet" href="/themes/newstv/pad/css/theme-style1.css">
-    <link rel="stylesheet" href="/themes/newstv/css/sprites-d9c03e614a.css">
+    <link rel="stylesheet" href="\themes\newstv\css/theme-style1.css">
     <link rel="stylesheet" href="/themes/newstv/pad/css/pad-style1.css?v=<?php $date = new \DateTime('now');
     echo $date->format('d.G.i'); ?>">
 

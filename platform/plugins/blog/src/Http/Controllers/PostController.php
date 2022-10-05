@@ -109,6 +109,8 @@ class PostController extends BaseController
 
         event(new CreatedContentEvent(POST_MODULE_SCREEN_NAME, $request, $post));
         $post2 = $this->postRepository->findOrFail($post->id);
+        $post2->short_link =md5($post2->id.date(now()));
+
         $post2->save();
         $tagService->execute($request, $post);
 
@@ -168,9 +170,10 @@ class PostController extends BaseController
 
         event(new UpdatedContentEvent(POST_MODULE_SCREEN_NAME, $request, $post));
         $post2 = $this->postRepository->findOrFail($post->id);
+        $post2->short_link =md5($post2->id.date(now()));
         $post2->save();
         $tagService->execute($request, $post);
-
+        //dd($post2);
         $categoryService->execute($request, $post);
         $slug = Slug::where(['reference_type' => 'Botble\Blog\Models\Post', 'reference_id' => $post->id])->first();
         $string = str_replace(' ', '-', $post->name); // Replaces all spaces with hyphens.

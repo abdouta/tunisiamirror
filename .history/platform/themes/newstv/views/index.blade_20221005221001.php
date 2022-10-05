@@ -329,16 +329,24 @@ $health = \Botble\Blog\Models\Category::find(64);
                         <div class="single-sidebar col-lg-12 col-md-6 col-12">
 
                             <!-- Sidebar Block Wrapper -->
-                            <div class="sidebar-block-wrapper table-wrapper">
+                            <div class="sidebar-block-wrapper">
 
+                                <!-- Sidebar Block Head Start -->
+                                <div class="head feature-head">
 
+                                    <!-- Title -->
+                                    <h4 class="title">{{ __('currencies') }}</h4>
+
+                                </div><!-- Sidebar Block Head End -->
 
                                 <!-- Sidebar Block Body Start -->
                                 <div class="body ">
                                     {!!  do_shortcode('[currencies][/currencies]') !!}
+
                                 </div><!-- Sidebar Block Body End -->
 
                             </div>
+
                         </div>
 
                         <!-- Single Sidebar -->

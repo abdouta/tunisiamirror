@@ -90,13 +90,28 @@ class PublicController extends Controller
      */
     public function getPost($slug, BlogService $blogService)
     {
+
         $slug = $this->slugRepository->getFirstBy([
             'key'    => $slug,
             'prefix' => SlugHelper::getPrefix(Post::class),
         ]);
 
         if (!$slug) {
+            $post=Post::where(['short_link'=>$slug])->first();
+
+            if (!$post) {
             abort(404);
+            }else{
+                $slug = $this->slugRepository->getFirstBy([
+                    'reference_id'    => $post->id,
+                    'reference_type'=>'Botble\Blog\Models\Post',
+                    'prefix' => SlugHelper::getPrefix(Post::class),
+                ]);
+                dd($slug);
+                if (!$slug) {
+                    abort(404);
+                    }
+            }
         }
 
         $data = $blogService->handleFrontRoutes($slug);
