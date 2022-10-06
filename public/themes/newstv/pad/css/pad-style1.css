@@ -946,6 +946,16 @@ footer .footer-top-section {
 
 /*Mobile*/
 @media screen and (max-width: 600px) {
+    .header-section .banner img {
+        float: left;
+        display: none;
+    }
+    .mobile-logo {
+        text-align: center;
+        padding: 0px 70px;
+        height: 60px;
+        margin: 0 auto;
+    }
      h1,h2,h3,h4,h5{
          width: 100%;
      }
